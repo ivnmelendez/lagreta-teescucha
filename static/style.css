@@ -1,0 +1,470 @@
+:root {
+  --background: #0a0a0a;
+  --surface: #151515;
+  --border: #2a2a2a;
+  --foreground: #f2f0eb;
+  --muted: #9a938a;
+  --accent: #f2f0eb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: -apple-system, "Segoe UI", sans-serif;
+}
+
+main {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 2.5rem;
+}
+
+main.main-ancho {
+  max-width: 1400px;
+}
+
+main.main-centrado {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1.5rem;
+  padding-top: 25vh;
+}
+
+main.main-centrado .formulario {
+  width: 100%;
+  max-width: 320px;
+}
+
+/* Panel de reportes: estilo tabla clasica, blanco, tipo hoja de calculo */
+body.pagina-admin {
+  --background: #f2f2f2;
+  --surface: #ffffff;
+  --border: #c7c7c7;
+  --foreground: #1a1a1a;
+  --muted: #5a5a5a;
+  --accent: #1a5fb4;
+}
+
+body.pagina-admin .boton-enviar {
+  color: #fff;
+  border-radius: 0;
+}
+
+body.pagina-admin input {
+  border-radius: 0;
+}
+
+body.pagina-admin .tabla-reportes {
+  border: 1px solid var(--border);
+}
+
+body.pagina-admin .tabla-reportes th,
+body.pagina-admin .tabla-reportes td {
+  border: 1px solid var(--border);
+}
+
+body.pagina-admin .tabla-reportes thead th {
+  background: #e4e4e4;
+}
+
+body.pagina-admin .tabla-reportes tbody tr:nth-child(even) {
+  background: #f7f7f7;
+}
+
+body.pagina-admin .tabla-reportes tbody tr:nth-child(odd) {
+  background: #ffffff;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.logo {
+  width: 220px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.subtitulo {
+  margin-top: 1.5rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.lista-categorias {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.tarjeta {
+  display: block;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 0.5rem;
+  padding: 1rem 1.1rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.tarjeta:active {
+  border-color: var(--accent);
+}
+
+.tarjeta-titulo {
+  display: block;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.tarjeta-descripcion {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.nota-final {
+  margin-top: 2.5rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.volver {
+  display: inline-block;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.boton-volver {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  text-decoration: none;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.boton-volver:active {
+  border-color: var(--accent);
+}
+
+.titulo-pagina {
+  margin: 0 0 0.4rem;
+  font-size: 1.4rem;
+}
+
+.intro-pagina {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+}
+
+.formulario-login {
+  position: relative;
+}
+
+.error-flotante {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  margin-bottom: 0.6rem;
+  white-space: nowrap;
+}
+
+.campo-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+textarea, input {
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--foreground);
+  padding: 0.65rem 0.8rem;
+  font-size: 1rem;
+  font-family: inherit;
+  margin-bottom: 1.2rem;
+}
+
+textarea:focus, input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.ayuda {
+  margin-top: -0.9rem;
+  margin-bottom: 1.2rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.error {
+  color: #ff8080;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.boton-enviar {
+  background: var(--accent);
+  color: #000;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.9rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.gracias {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.check {
+  font-size: 2.5rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.folio-label {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-bottom: 0.2rem;
+}
+
+.folio {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+}
+
+.mensaje {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.reportes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.boton-filtrar.boton-salir {
+  background: #c0392b;
+  border-color: #c0392b;
+  color: #fff;
+}
+
+.reportes-header-titulo {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+}
+
+.reportes-header .titulo-pagina {
+  margin-bottom: 0;
+}
+
+.contador-pendientes {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.filtro-campo {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.filtro-campo label {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.filtro-campo input,
+.filtro-campo select,
+.boton-filtrar {
+  height: 2.2rem;
+  box-sizing: border-box;
+  border-radius: 0;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--foreground);
+  padding: 0 0.6rem;
+  font-size: 0.85rem;
+  margin-bottom: 0;
+}
+
+.filtro-campo select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%235a5a5a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-position: right 0.75rem center;
+  background-repeat: no-repeat;
+  padding-right: 1.8rem;
+}
+
+.boton-filtrar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.paginacion {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.2rem;
+}
+
+.paginacion-info {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.paginacion-botones {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.tabla-scroll {
+  overflow-x: auto;
+}
+
+.tabla-reportes {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.tabla-reportes th,
+.tabla-reportes td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.6rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.tabla-reportes th:not(:nth-child(3)),
+.tabla-reportes td:not(:nth-child(3)) {
+  white-space: nowrap;
+}
+
+.tabla-reportes td:nth-child(3) {
+  white-space: normal;
+  max-width: 420px;
+  line-height: 1.45;
+}
+
+.tabla-reportes th:nth-child(6),
+.tabla-reportes td:nth-child(6) {
+  text-align: center;
+}
+
+.tabla-reportes th {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.th-orden {
+  color: inherit;
+  text-decoration: none;
+}
+
+.th-orden:hover {
+  color: var(--foreground);
+}
+
+.link-whatsapp {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.link-whatsapp:hover {
+  text-decoration: underline;
+}
+
+.etiqueta-estado {
+  border: 1px solid var(--border);
+  background: transparent;
+  border-radius: 0;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--muted);
+}
+
+.etiqueta-estado.resuelto {
+  background: #28a745;
+  border-color: #28a745;
+  color: #fff;
+}
+
+/* En pantallas angostas, la tabla se convierte en tarjetas apiladas */
+/* El panel de administrador solo esta pensado para computadora. */
+.aviso-escritorio {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .panel-escritorio {
+    display: none;
+  }
+
+  .aviso-escritorio {
+    display: block;
+    text-align: center;
+    color: var(--muted);
+    padding: 3rem 1.5rem;
+  }
+}

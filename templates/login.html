@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block body_class %}pagina-admin{% endblock %}
+{% block main_class %}main-centrado{% endblock %}
+{% block content %}
+  <form method="post" class="formulario formulario-login">
+    {% if error %}
+      <p class="error error-flotante">{{ error }}</p>
+    {% endif %}
+
+    <label class="campo-label" for="clave">Clave</label>
+    <input type="password" id="clave" name="clave" autofocus>
+
+    <button type="submit" class="boton-enviar">Entrar</button>
+  </form>
+{% endblock %}

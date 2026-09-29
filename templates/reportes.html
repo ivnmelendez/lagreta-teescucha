@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% block body_class %}pagina-admin{% endblock %}
+{% block main_class %}main-ancho{% endblock %}
+{% block content %}
+  <p class="aviso-escritorio">
+    Este panel esta diseñado para verse en computadora. Abrelo desde un
+    escritorio o laptop para ver los reportes.
+  </p>
+
+  <div class="panel-escritorio">
+  <div class="reportes-header">
+    <div class="reportes-header-titulo">
+      <h1 class="titulo-pagina">Reportes recibidos</h1>
+      <span class="contador-pendientes">({{ total_pendientes }} pendientes)</span>
+    </div>
+    <a href="{{ url_for('logout') }}" class="boton-filtrar boton-salir">Salir</a>
+  </div>
+
+  <form method="get" class="filtros">
+    <div class="filtro-campo">
+      <label for="folio">Folio</label>
+      <input type="text" id="folio" name="folio" value="{{ filtros.folio }}">
+    </div>
+
+    <div class="filtro-campo">
+      <label for="categoria">Categoria</label>
+      <select id="categoria" name="categoria">
+        <option value="">Todas</option>
+        {% for slug, cat in categorias.items() %}
+          <option value="{{ slug }}" {{ "selected" if filtros.categoria == slug }}>{{ cat.titulo }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="filtro-campo">
+      <label for="fecha">Fecha</label>
+      <input type="date" id="fecha" name="fecha" value="{{ filtros.fecha }}">
+    </div>
+
+    <div class="filtro-campo">
+      <label for="estado">Estado</label>
+      <select id="estado" name="estado">
+        <option value="">Todos</option>
+        <option value="pendiente" {{ "selected" if filtros.estado == "pendiente" }}>Pendiente</option>
+        <option value="resuelto" {{ "selected" if filtros.estado == "resuelto" }}>Resuelto</option>
+      </select>
+    </div>
+
+    <button type="submit" class="boton-filtrar">Filtrar</button>
+    <a href="{{ url_for('reportes') }}" class="boton-filtrar">Limpiar</a>
+  </form>
+
+  {% if reportes|length == 0 %}
+    <p class="intro-pagina">No hay reportes con esos filtros.</p>
+  {% else %}
+    <div class="tabla-scroll">
+      <table class="tabla-reportes">
+        <thead>
+          <tr>
+            <th>
+              <a class="th-orden" href="{{ url_for('reportes', categoria=filtros.categoria, folio=filtros.folio, fecha=filtros.fecha, estado=filtros.estado, orden='folio', direccion=('desc' if filtros.orden == 'folio' and filtros.direccion == 'asc' else 'asc')) }}">
+                Folio {{ "▲" if filtros.orden == 'folio' and filtros.direccion == 'asc' else ("▼" if filtros.orden == 'folio' else "") }}
+              </a>
+            </th>
+            <th>Categoria</th>
+            <th>Descripcion</th>
+            <th>WhatsApp</th>
+            <th>
+              <a class="th-orden" href="{{ url_for('reportes', categoria=filtros.categoria, folio=filtros.folio, fecha=filtros.fecha, estado=filtros.estado, orden='fecha', direccion=('desc' if filtros.orden == 'fecha' and filtros.direccion == 'asc' else 'asc')) }}">
+                Fecha {{ "▲" if filtros.orden == 'fecha' and filtros.direccion == 'asc' else ("▼" if filtros.orden == 'fecha' else "") }}
+              </a>
+            </th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for r in reportes %}
+            <tr>
+              <td data-label="Folio">{{ r.folio }}</td>
+              <td data-label="Categoria">{{ categorias[r.categoria].titulo if r.categoria in categorias else r.categoria }}</td>
+              <td data-label="Descripcion">{{ r.descripcion }}</td>
+              <td data-label="WhatsApp">
+                {% if r.whatsapp_link %}
+                  <a class="link-whatsapp" href="{{ r.whatsapp_link }}" target="_blank" rel="noopener">{{ r.whatsapp }}</a>
+                {% else %}
+                  -
+                {% endif %}
+              </td>
+              <td data-label="Fecha">{{ r.fecha_bonita }}</td>
+              <td data-label="Estado">
+                {% if r.resuelto %}
+                  <span class="etiqueta-estado resuelto">Resuelto</span>
+                {% else %}
+                  <form method="post" action="{{ url_for('resolver', reporte_id=r.id) }}">
+                    <button type="submit" class="etiqueta-estado pendiente">Pendiente</button>
+                  </form>
+                {% endif %}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="paginacion">
+      <span class="paginacion-info">Pagina {{ pagina }} de {{ total_paginas }}</span>
+      <div class="paginacion-botones">
+        {% if pagina > 1 %}
+          <a class="boton-filtrar" href="{{ url_for('reportes', categoria=filtros.categoria, folio=filtros.folio, fecha=filtros.fecha, estado=filtros.estado, orden=filtros.orden, direccion=filtros.direccion, pagina=pagina - 1) }}">Anterior</a>
+        {% endif %}
+        {% if pagina < total_paginas %}
+          <a class="boton-filtrar" href="{{ url_for('reportes', categoria=filtros.categoria, folio=filtros.folio, fecha=filtros.fecha, estado=filtros.estado, orden=filtros.orden, direccion=filtros.direccion, pagina=pagina + 1) }}">Siguiente</a>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+  </div>
+{% endblock %}

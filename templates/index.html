@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+  <header class="header">
+    <img src="{{ url_for('static', filename='logo.webp') }}" alt="La Greta" class="logo">
+    <p class="subtitulo">
+      Queremos conocer tu experiencia. Cuentanos que sucedio o como
+      podemos mejorar. Tu opinion sera tratada de forma privada.
+    </p>
+  </header>
+
+  <div class="lista-categorias">
+    {% for slug, cat in categorias.items() %}
+      <a href="{{ url_for('reportar', categoria=slug) }}" class="tarjeta">
+        <span class="tarjeta-titulo">{{ cat.titulo }}</span>
+        <span class="tarjeta-descripcion">{{ cat.descripcion }}</span>
+      </a>
+    {% endfor %}
+  </div>
+{% endblock %}

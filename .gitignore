@@ -1,0 +1,5 @@
+venv/
+__pycache__/
+*.pyc
+la_greta.db
+.DS_Store

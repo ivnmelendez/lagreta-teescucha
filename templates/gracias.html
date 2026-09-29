@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="gracias">
+    <p class="check">&#10003;</p>
+    <h2>Tu reporte ha sido recibido</h2>
+    <p class="mensaje">Gracias por ayudarnos a mejorar La Greta.</p>
+    <a href="{{ url_for('index') }}" class="boton-volver" aria-label="Volver al inicio">&larr;</a>
+  </div>
+{% endblock %}
