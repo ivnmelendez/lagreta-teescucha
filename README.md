@@ -8,7 +8,7 @@ Sistema de reportes y sugerencias para clientes de La Greta. Hecho con Python
 - Formulario para reportar en 6 categorias (cuenta y pago, atención
   y servicio, alimentos y bebidas, instalaciones, seguridad, sugerencia).
 - Panel de administrador con clave, filtros, orden y paginación.
-- Cada reporte guarda un folio unico (LG-1001, LG-1002...).
+- Cada reporte guarda un folio unico (LG-00001, LG-00002...).
 
 ## Como se corre
 
