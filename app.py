@@ -102,7 +102,8 @@ def solo_digitos(texto):
 def siguiente_folio(conn):
     cursor = conn.execute("SELECT COUNT(*) AS total FROM reportes")
     total = cursor.fetchone()["total"]
-    return f"LG-{1001 + total}"
+    numero = total + 1
+    return f"LG-{numero:05d}"
 
 
 @app.route("/login", methods=["GET", "POST"])
